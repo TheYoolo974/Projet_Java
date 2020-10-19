@@ -5,12 +5,12 @@
         <group>
             <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Projet_de_Java.java</file>
             <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Trader.java</file>
-            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Port.java</file>
             <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Pirate.java</file>
-            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Boats.java</file>
-            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Recruitment.java</file>
-            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Maritime_police.java</file>
-            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Crew.java</file>
+            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Ship.java</file>
+            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Corrupted_police.java</file>
+            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Outlaw.java</file>
+            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Corrupted_trader.java</file>
+            <file>file:/C:/Users/Jimmy/Documents/NetBeansProjects/Projet_de_Java/src/projet_de_java/Police.java</file>
         </group>
     </open-files>
 </project-private>

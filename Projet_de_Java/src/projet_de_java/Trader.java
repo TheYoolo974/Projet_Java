@@ -9,6 +9,20 @@ package projet_de_java;
  *
  * @author Jimmy
  */
-public class Trader extends Crew {
+public class Trader extends Ship{
+    int treasure;
+    boolean escaped = false;
+    static boolean corrupted = false;
     
+    
+    public void runaway(){
+        if(escaped == true){
+            System.out.println("Le trader a réussi à s'échapper !");
+        }
+        else{
+            treasure = 0;
+            System.out.println("Le trader n'a pas réussi à s'échapper !");
+        }
+    }
+   
 }

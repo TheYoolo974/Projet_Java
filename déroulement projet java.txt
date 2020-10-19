@@ -1,0 +1,70 @@
+-->Entrez le nombre de bateaux pirates: 3 
+
+-->Entrez le nombre de bateaux de traders: 2 ( 30% de chance d'être corrupt )
+
+Génération des bounty et des treasures des bateaux...
+Génération des menaces des bateaux pirates et traders et policiers... ( 0< menace traders <= 2 , 1<= menace pirate<=5 ) (menace policier = 3)
+
+Génération du nombre de bateaux de policiers ... 
+Bateaux de policiers générés : 2 ( 30% de chance d'être corrupt )
+
+Début --------------------------------------------------
+
+Les pirates se déplacent ... (cherche le bateau avec le plus de bounty / treasure) exemple : bateau M
+
+Le bateau de pirate n°1 s'approche de M. 
+
+--------------------------------------------------------
+Si M est un bateau pirate --> attack(M) --> Si menace de bateau n°1 > à M = il remporte la totalité de son bounty et M est coulé ( pirate -1 ).
+Si menace de bateau n°1 < à M = M remporte la totalité du bounty du bateau n°1 et il est coulé ( pirate - 1 ) .
+Si menace de bateau n°1 == à M = le bateau n°1 passe à sa prochaine cible avec le plus de bounty/ treasure )
+
+
+--------------------------------------------------------
+Si M est un bateau de trader --> attack(M)
+--> pourcentage de chance de réussite = menace pirate n° 1 - menace trader M
+Pourcentage de réussite : 5 --> 100% de réussite
+			  4 --> 75% de réussite
+			  3 --> 50 % de réussite
+			  2 --> 25 % de réussite
+			  1 --> 10 % de réussite
+			  0 et -1 --> 0 % de réussite
+
+Si réussite --> le bateau de trader coule ( traders -1 ) , bounty du bateau n°1 += treasure du trader puis fin du tour 
+Si non réussite --> le bateau n°1 passe à sa prochaine cible avec le plus de bounty/ treasure ) puis fin du tour 
+
+( Si le dernier pirate a joué --> tour des policiers )
+-------------------------------------------------------
+Si M est un bateau de trader corrupt --> attack(M)
+	Le bateau de trader corrupt runaway --> perte de % de treasure
+	Sinon il s'enfuit et fin du tour ( si treasure == 0 alors -1 corrupted trader )
+-------------------------------------------------------
+
+Les policiers se déplacent...
+
+Le policier n°1 cherche la menace la plus élevée. exemple bateau N
+
+--------------------------------------------------------
+Si N est un bateau pirate --> arrest(N) --> Si menace de policier n°1 > à N = N est coulé ( -1 pirate ) et la taxe += bounty.
+	Si menace du policier n°1 < à N = N remporte la totalité des taxes du policier n°1 et il est coulé ( -1 policier ).
+	Si menace de bateau n°1 == à N = le policier n°1 passe à sa prochaine cible avec le plus de bounty/ treasure ( il n'a pas réussit a les arrêter ) )
+
+fin du tour
+
+--------------------------------------------------------
+Si N est un bateau de trader non corrupt --> taxe(N)
+Si N est un bateau de trader corrupt --> il cherche à s'enfuir avec 50% de chance de réussite:
+	Si il réussit sa fuite --> fin du tour
+	Si il ne réussit pas --> taxes += treasures + bounty puis fin du tour ( traders -1 )
+
+-------------------------------------------------------
+
+Si nombre de pirate >1 -->même chose pour le second pirate
+Sinon --> tour des policiers
+
+-------------------------------------------------------
+
+Si nombre de policier >1 --> même chose pour le policier suivant
+Sinon -->  Si le dernier policier a joué --> fin du jeu 
+
+

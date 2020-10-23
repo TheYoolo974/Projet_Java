@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+
 /**
  *
  * @author Jimmy
@@ -233,8 +234,7 @@ public class Projet_de_Java {
             tab_policiers_corru.add(policiers_corru_dispo.get(i));
         }
        
-
-
+        
         System.out.println("Bateaux de policiers générés: " + nombre_policiers);
         System.out.println("!!! " + nombre_policiers_corru +" d'entre eux semblent corrompu(s) !!!");
         
@@ -352,21 +352,25 @@ public class Projet_de_Java {
         System.out.println("Pour les pirates:");
         //pirates
         for(int i = 0; i<tab_pirates.size();i++){
-            if((tab_pirates.get(i)).menace == 1){
-                (tab_pirates.get(i)).bounty = 100;
+            switch ((tab_pirates.get(i)).menace) {
+                case 1:
+                    (tab_pirates.get(i)).bounty = 100;
+                    break;
+                case 2:
+                    (tab_pirates.get(i)).bounty = 200;
+                    break;
+                case 3:
+                    (tab_pirates.get(i)).bounty = 300;
+                    break;
+                case 4:
+                    (tab_pirates.get(i)).bounty = 400;
+                    break;
+                case 5:
+                    (tab_pirates.get(i)).bounty = 500;
+                    break;
+                default:
+                    break;
             }
-            else if((tab_pirates.get(i)).menace == 2){
-                (tab_pirates.get(i)).bounty = 200;
-            }
-            else if((tab_pirates.get(i)).menace == 3){
-                (tab_pirates.get(i)).bounty = 300;
-            }
-            else if((tab_pirates.get(i)).menace == 4){
-                (tab_pirates.get(i)).bounty = 400;
-            }
-            else if((tab_pirates.get(i)).menace == 5){
-                (tab_pirates.get(i)).bounty = 500;
-            }  
             
         System.out.print(tab_pirates.get(i).nom + " , bounty: ");
         System.out.println(tab_pirates.get(i).bounty);  
@@ -376,14 +380,18 @@ public class Projet_de_Java {
         System.out.println("\nPour les traders:");
         //traders
         for(int i = 0; i<tab_traders.size();i++){
-            if((tab_traders.get(i)).menace == 0){
-                (tab_traders.get(i)).treasure = 1000;
-            }
-            else if((tab_traders.get(i)).menace == 1){
-                (tab_traders.get(i)).treasure = 1100;
-            }
-            else if((tab_traders.get(i)).menace == 2){
-                (tab_traders.get(i)).treasure = 1200;
+            switch ((tab_traders.get(i)).menace) {
+                case 0:
+                    (tab_traders.get(i)).treasure = 1000;
+                    break;
+                case 1:
+                    (tab_traders.get(i)).treasure = 1100;
+                    break;
+                case 2:
+                    (tab_traders.get(i)).treasure = 1200;
+                    break;
+                default:
+                    break;
             }
         System.out.print(tab_traders.get(i).nom + " , treasure: ");
         System.out.println(tab_traders.get(i).treasure);

@@ -11,13 +11,16 @@ package projet_de_java;
  */
 public interface Outlaw {
    
-    public abstract void attack(Trader trader);
+
+    public void trader_corru_attack(Corrupted_trader trader, Trader ship);
+  
     
-    public abstract void attack(Pirate pirate);
-    
-    public abstract void negotiate();
+            
+    public void police_corru_attack(Corrupted_police police, Pirate ship);
+    public void police_corru_attack(Corrupted_police police, Trader ship);
+    public void police_corru_attack(Corrupted_police police, Corrupted_trader ship);
  
-    public abstract void runaway();
+    //public abstract void runaway();
 }
     
 

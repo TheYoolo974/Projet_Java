@@ -12,14 +12,13 @@ package projet_de_java;
  */
 public class Ship {
     
-    static boolean sink;
-    String flag;
-    int number_crew;
-    static int menace;
+    boolean sink;
+    int menace;
+    protected String nom;
     
-    public static void action(String args){
+    /*public static void action(String args){
         System.out.println(args);
-    }
+    }*/
     
 }
 

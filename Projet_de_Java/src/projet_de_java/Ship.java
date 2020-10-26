@@ -12,7 +12,7 @@ package projet_de_java;
  */
 public class Ship {
     
-    boolean sink;
+    boolean sink=false;
     int menace;
     protected String nom;
     

@@ -13,6 +13,7 @@ public interface Outlaw {
    
 
     public void trader_corru_attack(Corrupted_trader trader, Trader ship);
+    public void trader_corru_attack(Corrupted_trader trader, Police ship);
   
     
             

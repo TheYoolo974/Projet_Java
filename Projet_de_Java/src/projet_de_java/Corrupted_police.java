@@ -26,13 +26,13 @@ public class Corrupted_police extends Police implements Outlaw{
             police.taxes+=ship.bounty;
             ship.bounty = 0;
             ship.sink=true;
-            System.out.println(police + " qui était corrompu a arrêté l'équipage de " + ship + " et l'a donc coulé");
+            System.out.println(police + " qui était corrompu a arrêté l'équipage de " + ship.nom + " et l'a donc coulé");
         }
         else if(police.menace<ship.menace){
             ship.bounty+=police.taxes;
             police.taxes = 0;
             police.sink=true;
-            System.out.println("Oh non ! ... Quoi que attendez..." + ship + " a coulé " + police + " qui était en fait corrompu et récupère son contenu");
+            System.out.println("Oh non ! ... Quoi que attendez..." + ship.nom + " a coulé " + police.nom + " qui était en fait corrompu et récupère son contenu");
         }
     }
     
@@ -41,7 +41,7 @@ public class Corrupted_police extends Police implements Outlaw{
         police.taxes+=ship.treasure;
         ship.treasure = 0;
         ship.sink=true;
-        System.out.println(police + " qui était malheuresement corrompu a coulé " + ship + " et a récolté son contenu!");
+        System.out.println(police.nom + " qui était malheuresement corrompu a coulé " + ship.nom + " et a récolté son contenu!");
         
 
     }
@@ -54,19 +54,24 @@ public class Corrupted_police extends Police implements Outlaw{
             ship.treasure = 0;
             ship.bounty = 0;
             ship.sink = true;
-            System.out.println(ship + " qui était corrumpu et s'est fait couler par " + police + " qui était lui aussi corrompu !");
+            System.out.println(ship.nom + " qui était corrumpu et s'est fait couler par " + police.nom + " qui était lui aussi corrompu !");
         }
         else{
             ship.bounty += police.taxes + police.bounty;
             police.taxes = 0;
             police.bounty = 0;
             police.sink = true;
-            System.out.println(police + " qui était corrumpu et s'est fait couler par " + ship + " qui était lui aussi corrompu !");
+            System.out.println(police.nom + " qui était corrumpu et s'est fait couler par " + ship.nom + " qui était lui aussi corrompu !");
         }
     }
 
     @Override
     public void trader_corru_attack(Corrupted_trader trader, Trader ship) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void trader_corru_attack(Corrupted_trader trader, Police ship) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

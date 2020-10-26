@@ -30,16 +30,16 @@ public class Projet_de_Java {
         boolean valide = false;
         while (!valide) {
             try{
-                System.out.println("Entrez le nombre de bateaux pirates (int between 1 and 10 please): ");
+                System.out.println("Entrez le nombre de bateaux pirates (int between 2 and 10 please): ");
                 System.out.print("---> ");
                 value = keyboard.nextInt();
-                if(value >=1 && value<=10){
+                if(value >=2 && value<=10){
                     valide = true;
                 }
             }
             catch(InputMismatchException e){
                 System.out.println("Alert exception found: --> UNEXPECTED INPUT");
-                System.out.println("Try again please, (int between 1 and 10)"); 
+                System.out.println("Try again please, (int between 2 and 10)"); 
                 keyboard.nextLine();
             }
         }
@@ -85,16 +85,16 @@ public class Projet_de_Java {
         boolean valide2 = false;
         while (!valide2) {
             try{
-                System.out.println("Entrez le nombre de bateaux de traders (int between 1 and 5 please): ");
+                System.out.println("Entrez le nombre de bateaux de traders (int between 1 and 8 please): ");
                 System.out.print("---> ");
                 value = keyboard.nextInt();
-                if(value >=1 && value<=5){
+                if(value >=1 && value<=8){
                     valide2 = true;
                 }
             }
             catch(InputMismatchException e){
                 System.out.println("Alert exception found: --> UNEXPECTED INPUT");
-                System.out.println("Try again please, (int between 1 and 5)"); 
+                System.out.println("Try again please, (int between 1 and 8)"); 
                 keyboard.nextLine();
             }
         }
@@ -129,6 +129,10 @@ public class Projet_de_Java {
         Trader laura = new Trader("<Trader> Laura");
         Trader laetitia = new Trader("<Trader> Laetitia");
         Trader arnaud = new Trader("<Trader> Arnaud");
+        Trader valentin = new Trader("<Trader> Valentin");
+        Trader titouan = new Trader("<Trader> Titouan");
+        Trader ginette = new Trader("<Trader> Ginette");
+        
        
         
         traders_dispo.add(maxence);
@@ -136,12 +140,17 @@ public class Projet_de_Java {
         traders_dispo.add(laura);
         traders_dispo.add(laetitia);
         traders_dispo.add(arnaud);
+        traders_dispo.add(valentin);
+        traders_dispo.add(titouan);
+        traders_dispo.add(ginette);
     
         
         for(int i = 0; i<nombre_trader;i++){
             tab_traders.add(traders_dispo.get(i));
         }
 
+        
+        
         //Génération des traders corrompus
         
         List<Corrupted_trader> traders_corru_dispo = new ArrayList<Corrupted_trader>();
@@ -192,7 +201,7 @@ public class Projet_de_Java {
         else{
             nombre_policiers=4;
             nombre_policiers_corru=1;
-            if(nombre_pirate <= 5){
+            if(nombre_pirate >= 6){
                 nombre_policiers_corru=2;
             }
         }
@@ -230,7 +239,7 @@ public class Projet_de_Java {
         policiers_corru_dispo.add(jimmy);
         
        
-        for(int i = 0; i<nombre_trader_corru;i++){
+        for(int i = 0; i<nombre_policiers_corru;i++){
             tab_policiers_corru.add(policiers_corru_dispo.get(i));
         }
        
@@ -259,6 +268,8 @@ public class Projet_de_Java {
         tab_traders.forEach(elem -> {
             System.out.println(elem.nom);
         });
+        
+       
         
         System.out.println("\n");
         
@@ -297,7 +308,7 @@ public class Projet_de_Java {
         System.out.println("Génération des menaces des bateaux pirates et traders et policiers...\n");
         
         //TODO: GENERATION DES MENACES
-        // 0< menace traders <= 2 / 1<= menace pirate<=5 / menace policier = 3 / menace corru = 4
+        // 1< menace traders <= 3 / 1<= menace pirate<=5 / menace policier = 3 / menace corru = 4
         
         System.out.println("Récap des menaces:");
         System.out.println("Pour les pirates:");
@@ -312,9 +323,9 @@ public class Projet_de_Java {
         
         
         System.out.println("\nPour les traders:");
-        // 0< menace trader <= 2
+        // 1<= menace trader <= 3
         for(int i = 0; i<tab_traders.size();i++){
-            int luck = (int)(Math.random() * 3);
+            int luck = 1+(int)(Math.random()*2);
             (tab_traders.get(i)).menace = luck;
             System.out.print(tab_traders.get(i).nom + " , menace: ");
             System.out.println(tab_traders.get(i).menace);
@@ -406,21 +417,21 @@ public class Projet_de_Java {
         System.out.print(tab_traders_corru.get(i).nom + " , bounty: ");
         System.out.print(tab_traders_corru.get(i).bounty);
         System.out.print(" , treasure: ");
-        System.out.print(tab_traders_corru.get(i).treasure);
+        System.out.print(tab_traders_corru.get(i).treasure + "\n");
         }
         
-        System.out.println("\nPour les policiers:");
+        System.out.println("\n\nPour les policiers:");
         //policiers
         //Les policiers n'ont que l'argent récolté des taxes qui démarre donc de 0.
         System.out.println("Les policiers n'ont que l'argent récolté des taxes.");
         System.out.println("Taxes de départ  pour tout les policiers : 0\n");
         
-        System.out.println("\nPour les policiers corrompus:");
+        System.out.println("\nPour les policiers corrompus:\n");
+        System.out.println("Taxes de départ  pour tout les policiers corrompus : 0");
         //policiers corrompus
-         for(int i = 0; i<tab_policiers_corru.size();i++){
+        for(int i = 0; i<tab_policiers_corru.size();i++){
             (tab_policiers_corru.get(i)).bounty = 400; //+ les taxes d'un policier classique
-            
-        System.out.println("Taxes de départ  pour tout les policiers corrompus : 0");    
+                
         System.out.print(tab_policiers_corru.get(i).nom + " , bounty: ");
         System.out.println(tab_policiers_corru.get(i).bounty);
         }
@@ -433,14 +444,159 @@ public class Projet_de_Java {
         //------------------------------------------------------------------------------------------------//
         
         
-    
-        
-        
         System.out.println("\nDébut -------------------------------------------------------");
 
-        System.out.println("Les pirates se déplacent ...");
+        System.out.println("Les pirates se déplacent ...\n");
+        
+        
+        
+        //On fait jouer la premiere partie des pirates 
         //(cherche le bateau avec le plus de bounty / treasure)
-        //etc
+        
+        //int pirates_pas_joue=0;
+        int p =0;
+        for(int u = 0; u<tab_traders.size();u++){
+        tab_pirates.get(p).attack(tab_pirates.get(p), tab_traders.get(u));
+            if(tab_pirates.get(p).sink==true){
+                tab_pirates.remove(p);
+                if(p==tab_pirates.size()){
+                    break;
+                }
+            }
+            else if(tab_traders.get(u).sink == true){
+                tab_traders.remove(u);
+                u--;
+                //pirates_pas_joue++; // on augmente cette variable dans le cas où des pirates on joué leur tour mais qu'il ne sont pas morts ( donc encore dans la liste )
+
+                if(p==tab_pirates.size()-1){
+                    break;
+                }
+                else{
+                    p++;
+                }
+            }
+        }
+        
+        System.out.println("\nLes policiers se déplacent pour venir arrêter les pirates...\n");
+        
+        
+        //8 pirates 2 traders 2 policiers
+
+        int m =0;
+        for(int u =  0; u<tab_pirates.size();u++){
+            tab_policiers.get(m).arrest(tab_policiers.get(m),tab_pirates.get(u));
+            if(tab_policiers.get(m).sink==true){
+                tab_policiers.remove(m);
+                if(m==tab_policiers.size()){
+                    break;
+                }
+            }
+            else if(tab_pirates.get(u).sink == true){
+                tab_pirates.remove(u);
+                u--;
+
+                if(m==tab_policiers.size()-1){
+                    break;
+                }
+                else{
+                    m++;
+                }
+            }
+        }
+        
+        System.out.println("\nLes policiers décident de taxer les pauvres traders aux alentours ...\n");
+        
+        if(!tab_traders.isEmpty() && !tab_policiers.isEmpty()){
+            int n =0;
+            for(int u =  0; u<tab_traders.size();u++){
+                tab_policiers.get(n).taxe(tab_policiers.get(n),tab_traders.get(u));
+               
+                if(n==tab_policiers.size()-1){
+                    break;
+                }
+                else{
+                    n++;
+                }
+            }
+            
+        }
+        
+        
+        
+        if(!tab_traders_corru.isEmpty() && !tab_policiers.isEmpty()){
+            int l =0;
+            for(int u =  0; u<tab_traders_corru.size();u++){
+                tab_policiers.get(l).taxe(tab_policiers.get(l),tab_traders_corru.get(u));
+                if(tab_policiers.get(l).sink==true){
+                    tab_policiers.remove(l);
+                    if(l==tab_policiers.size()){
+                        break;
+                    }
+                }
+                else if(tab_traders_corru.get(u).sink == true){
+                    tab_traders_corru.remove(u);
+                    u--;
+
+                    if(l==tab_policiers.size()-1){
+                        break;
+                    }
+                    else{
+                        l++;
+                    }
+                }
+            }
+        }
+       
+
+        
+        
+        
+        
+        
+        
+        
+        System.out.println("\nRécap:");
+        System.out.println("Pour les pirates:");
+        
+        
+        for(int i = 0; i<tab_pirates.size();i++){
+            System.out.print(tab_pirates.get(i).nom + " , menace: ");
+            System.out.print(tab_pirates.get(i).menace);
+            System.out.println(" , bounty: " + tab_pirates.get(i).bounty);
+        }
+        
+         System.out.println("\nPour les traders:");
+        
+        for(int i = 0; i<tab_traders.size();i++){
+            System.out.print(tab_traders.get(i).nom + " , menace: ");
+            System.out.print(tab_traders.get(i).menace);
+            System.out.println(" , treasure: " + tab_traders.get(i).treasure);
+        }
+        
+        System.out.println("\nPour les policiers:");
+        
+        for(int i = 0; i<tab_policiers.size();i++){
+            System.out.print(tab_policiers.get(i).nom + " , menace: ");
+            System.out.print(tab_policiers.get(i).menace);
+            System.out.println(" , taxes: " + tab_policiers.get(i).taxes);
+        }
+        
+        System.out.println("\nPour les traders corrompus:");
+        
+        for(int i = 0; i<tab_traders_corru.size();i++){
+            System.out.print(tab_traders_corru.get(i).nom + " , menace: ");
+            System.out.print(tab_traders_corru.get(i).menace);
+            System.out.print(" , treasure: " + tab_traders_corru.get(i).treasure);
+            System.out.println(" , bounty: " + tab_traders_corru.get(i).bounty);
+        }
+        
+        //Si après les attaques , si il reste plus de la moitié des pirates au total on fait jouer les policiers
+        //Sinon on fait jouer la deuxieme partie des policiers
+        //On fait jouer les policiers
+        //On arrête le jeu dans les cas suivants:
+        //Si les policiers = 0 ou que policier restant = corrompu  // traders =0 ou alors trader restants = corrompus + nombre_pirate =nombre_pirate/2 // les pirates = 0
+        //On affiche un récap des bateaux encore vivants et de leurs bounty/treasure/taxes
+        
     }
     
 }

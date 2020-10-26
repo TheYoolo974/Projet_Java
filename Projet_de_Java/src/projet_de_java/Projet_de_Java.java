@@ -17,9 +17,18 @@ import java.util.InputMismatchException;
  */
 public class Projet_de_Java {
 
-    /**
-     * @param args the command line arguments
-     */
+    
+    public static void wait(int ms){
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+    
     public static void main(String[] args) {
         
         Scanner keyboard = new Scanner (System.in);
@@ -47,7 +56,10 @@ public class Projet_de_Java {
         
         int nombre_pirate = value;
         
-        System.out.println("Il y aura donc "+ nombre_pirate + " bateaux pirates");
+        System.out.println("Il y aura donc "+ nombre_pirate + " bateaux pirates.\n");
+        
+        System.out.println("Génération des pirates...");
+        wait(2000);
         
         List<Pirate> pirates_dispo = new ArrayList<Pirate>();
         List<Pirate> tab_pirates = new ArrayList<Pirate>();
@@ -79,7 +91,7 @@ public class Projet_de_Java {
             tab_pirates.add(pirates_dispo.get(i));
         }
         
-        
+        System.out.println("Pirates générés avec succès.\n");
         // On demande le nombre de bateaux marchands à l'utilisateur ( MAX 5 )
         
         boolean valide2 = false;
@@ -101,8 +113,10 @@ public class Projet_de_Java {
         
         int nombre_trader =value;
         
-        System.out.println("Il y aura donc "+ nombre_trader + " bateaux marchands");
+        System.out.println("Il y aura donc "+ nombre_trader + " bateaux marchands.\n");
         
+        System.out.println("Génération des traders...");
+        wait(2000);
         
         int nombre_trader_corru=0;
         
@@ -149,7 +163,8 @@ public class Projet_de_Java {
             tab_traders.add(traders_dispo.get(i));
         }
 
-        
+        System.out.println("Traders générés avec succès.\n");
+        wait(1000);
         
         //Génération des traders corrompus
         
@@ -169,12 +184,10 @@ public class Projet_de_Java {
             tab_traders_corru.add(traders_corru_dispo.get(i));
         }
        
-        System.out.println("!!! " + nombre_trader_corru +" d'entre eux semblent corrompu(s) !!!");
+        System.out.println("!!! " + nombre_trader_corru +" d'entre eux semblent corrompu(s) !!!\n");
+        wait(1000);
         
-        System.out.println("\n");
-        
-      
-        
+       
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
@@ -183,6 +196,7 @@ public class Projet_de_Java {
         
         //Génération des bateaux policiers en fonction des traders et des pirates
         System.out.println("Génération du nombre de bateaux de policiers ...");
+        wait(2000);
         
         
         int nombre_policiers;
@@ -253,6 +267,7 @@ public class Projet_de_Java {
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
         
+        wait(1000);
         System.out.println("\nIl y aura donc :");
         System.out.println("En pirates:");
         
@@ -304,8 +319,13 @@ public class Projet_de_Java {
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
         
+        wait(1000);
+        
        //Génération des menaces
         System.out.println("Génération des menaces des bateaux pirates et traders et policiers...\n");
+        wait(2000);
+        System.out.println("Menaces générées avec succès.\n");
+        wait(1000);
         
         //TODO: GENERATION DES MENACES
         // 1< menace traders <= 3 / 1<= menace pirate<=5 / menace policier = 3 / menace corru = 4
@@ -355,9 +375,12 @@ public class Projet_de_Java {
             System.out.println(tab_policiers_corru.get(i).menace);
         }
         
-        
+        wait(1000);
         //Génération bounty (entre 100 et 500) + treasures (entre 1000 et 1200)
         System.out.println("\nGénération des bounty et des treasures des bateaux...");
+        wait(2000);
+        System.out.println("Bounty/treasures générés avec succès.");
+        wait(1000);
         
         System.out.println("Récap des bounty / treasures:\n");
         System.out.println("Pour les pirates:");
@@ -443,8 +466,10 @@ public class Projet_de_Java {
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
         
-        
+        wait(2000);
         System.out.println("\nDébut -------------------------------------------------------");
+        
+        wait(1000);
 
         System.out.println("Les pirates se déplacent ...\n");
         
@@ -590,9 +615,7 @@ public class Projet_de_Java {
             System.out.println(" , bounty: " + tab_traders_corru.get(i).bounty);
         }
         
-        //Si après les attaques , si il reste plus de la moitié des pirates au total on fait jouer les policiers
-        //Sinon on fait jouer la deuxieme partie des policiers
-        //On fait jouer les policiers
+   
         //On arrête le jeu dans les cas suivants:
         //Si les policiers = 0 ou que policier restant = corrompu  // traders =0 ou alors trader restants = corrompus + nombre_pirate =nombre_pirate/2 // les pirates = 0
         //On affiche un récap des bateaux encore vivants et de leurs bounty/treasure/taxes

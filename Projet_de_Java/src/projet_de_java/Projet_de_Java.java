@@ -9,11 +9,13 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Arnaud
  */
 public class Projet_de_Java {
 
@@ -34,21 +36,21 @@ public class Projet_de_Java {
         Scanner keyboard = new Scanner (System.in);
         int value = 0;
         
-        // On demande le nombre de bateaux pirates à l'utilisateur ( MAX 10 )
+        // On demande le nombre de bateaux pirates à l'utilisateur ( MIN 5 MAX 20 )
       
         boolean valide = false;
         while (!valide) {
             try{
-                System.out.println("Entrez le nombre de bateaux pirates (int between 2 and 10 please): ");
+                System.out.println("Entrez le nombre de bateaux pirates (int between 5 and 20 please): ");
                 System.out.print("---> ");
                 value = keyboard.nextInt();
-                if(value >=2 && value<=10){
+                if(value >=5 && value<=20){
                     valide = true;
                 }
             }
             catch(InputMismatchException e){
                 System.out.println("Alert exception found: --> UNEXPECTED INPUT");
-                System.out.println("Try again please, (int between 2 and 10)"); 
+                System.out.println("Try again please, (int between 5 and 20)"); 
                 keyboard.nextLine();
             }
         }
@@ -67,31 +69,21 @@ public class Projet_de_Java {
         System.out.println("Génération des pirates...");
         wait(2000);
         
+        
         List<Pirate> pirates_dispo = new ArrayList<>();
         List<Pirate> tab_pirates = new ArrayList<>();
         
-        Pirate jack = new Pirate("<Pirate> Jack");
-        Pirate honorine = new Pirate("<Pirate> Honorine");
-        Pirate geoffrey = new Pirate("<Pirate> Geoffrey");
-        Pirate thibaud = new Pirate("<Pirate> Thibaud");
-        Pirate alexandre = new Pirate("<Pirate> Alexandre");
-        Pirate jeancharles = new Pirate("<Pirate> Jean-Charles");
-        Pirate charles = new Pirate("<Pirate> Charles");
-        Pirate eloy = new Pirate("<Pirate> Eloy");
-        Pirate matthis = new Pirate("<Pirate> Matthis");
-        Pirate pierrick = new Pirate("<Pirate> Pierrick");
-        
-        pirates_dispo.add(jack);
-        pirates_dispo.add(honorine);
-        pirates_dispo.add(geoffrey);
-        pirates_dispo.add(thibaud);
-        pirates_dispo.add(alexandre);
-        pirates_dispo.add(jeancharles);
-        pirates_dispo.add(charles);
-        pirates_dispo.add(eloy);
-        pirates_dispo.add(matthis);
-        pirates_dispo.add(pierrick);
-        
+        try {
+            Scanner scan_fichier = new Scanner(new File("noms_pirates.txt"));
+            while(scan_fichier.hasNextLine())
+            {
+                String line = scan_fichier.nextLine();
+                Pirate new_pirate = new Pirate(line);
+                pirates_dispo.add(new_pirate);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé");
+        }
         
         for(int i = 0; i<nombre_pirate;i++){
             tab_pirates.add(pirates_dispo.get(i));
@@ -105,21 +97,21 @@ public class Projet_de_Java {
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
         
-        // On demande le nombre de bateaux marchands à l'utilisateur ( MAX 5 )
+        // On demande le nombre de bateaux marchands à l'utilisateur ( MIN 2 MAX 12 )
         
         boolean valide2 = false;
         while (!valide2) {
             try{
-                System.out.println("Entrez le nombre de bateaux de traders (int between 1 and 8 please): ");
+                System.out.println("Entrez le nombre de bateaux de traders (int between 2 and 12 please): ");
                 System.out.print("---> ");
                 value = keyboard.nextInt();
-                if(value >=1 && value<=8){
+                if(value >=2 && value<=12){
                     valide2 = true;
                 }
             }
             catch(InputMismatchException e){
                 System.out.println("Alert exception found: --> UNEXPECTED INPUT");
-                System.out.println("Try again please, (int between 1 and 8)"); 
+                System.out.println("Try again please, (int between 2 and 12)"); 
                 keyboard.nextLine();
             }
         }
@@ -157,25 +149,17 @@ public class Projet_de_Java {
         List<Trader> traders_dispo = new ArrayList<>();
         List<Trader> tab_traders = new ArrayList<>();
         
-        Trader maxence = new Trader("<Trader> Maxence");
-        Trader damien = new Trader("<Trader> Damien");
-        Trader laura = new Trader("<Trader> Laura");
-        Trader laetitia = new Trader("<Trader> Laetitia");
-        Trader arnaud = new Trader("<Trader> Arnaud");
-        Trader valentin = new Trader("<Trader> Valentin");
-        Trader titouan = new Trader("<Trader> Titouan");
-        Trader ginette = new Trader("<Trader> Ginette");
-        
-       
-        
-        traders_dispo.add(maxence);
-        traders_dispo.add(damien);
-        traders_dispo.add(laura);
-        traders_dispo.add(laetitia);
-        traders_dispo.add(arnaud);
-        traders_dispo.add(valentin);
-        traders_dispo.add(titouan);
-        traders_dispo.add(ginette);
+        try {
+            Scanner scan_fichier = new Scanner(new File("noms_traders.txt"));
+            while(scan_fichier.hasNextLine())
+            {
+                String line = scan_fichier.nextLine();
+                Trader new_trader = new Trader(line);
+                traders_dispo.add(new_trader);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé");
+        }
     
         
         for(int i = 0; i<nombre_trader;i++){
@@ -196,14 +180,17 @@ public class Projet_de_Java {
         List<Corrupted_trader> traders_corru_dispo = new ArrayList<>();
         List<Corrupted_trader> tab_traders_corru = new ArrayList<>();
         
-        Corrupted_trader hugo = new Corrupted_trader("<Trader_corrupt> Hugo");
-        Corrupted_trader julien = new Corrupted_trader("<Trader_corrupt> Julien");
-        Corrupted_trader amaury = new Corrupted_trader("<Trader_corrupt> Amaury");
-       
-        
-        traders_corru_dispo.add(hugo);
-        traders_corru_dispo.add(julien);
-        traders_corru_dispo.add(amaury);
+        try {
+            Scanner scan_fichier = new Scanner(new File("noms_traders_corrompus.txt"));
+            while(scan_fichier.hasNextLine())
+            {
+                String line = scan_fichier.nextLine();
+                Corrupted_trader new_corrupted_trader = new Corrupted_trader(line);
+                traders_corru_dispo.add(new_corrupted_trader);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé");
+        }
        
         for(int i = 0; i<nombre_trader_corru;i++){
             tab_traders_corru.add(traders_corru_dispo.get(i));
@@ -254,22 +241,23 @@ public class Projet_de_Java {
         List<Police> policiers_dispo = new ArrayList<>();
         List<Police> tab_policiers = new ArrayList<>();
         
-        Police ludovic = new Police("<Police> Ludovic");
-        Police nicolas = new Police("<Police> Nicolas");
-        Police axel = new Police("<Police> Axel");
-        Police michael = new Police("<Police> Michael");
-       
-        
-        policiers_dispo.add(ludovic);
-        policiers_dispo.add(nicolas);
-        policiers_dispo.add(axel);
-        policiers_dispo.add(michael);
+        try {
+           Scanner scan_fichier = new Scanner(new File("noms_policiers.txt"));
+           while(scan_fichier.hasNextLine())
+           {
+               String line = scan_fichier.nextLine();
+               Police new_policier = new Police(line);
+               policiers_dispo.add(new_policier);
+           }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé");
+        }
         
         for(int i = 0; i<nombre_policiers;i++){
             tab_policiers.add(policiers_dispo.get(i));
         }
         
-        System.out.println("Bateaux de policiers générés: " + nombre_policiers);
+        System.out.println("Bateaux de policiers générés: " + nombre_policiers + "\n");
         
         //------------------------------------------------------------------------------------------------//
         //------------------------------------------------------------------------------------------------//
@@ -282,16 +270,18 @@ public class Projet_de_Java {
         List<Corrupted_police> policiers_corru_dispo = new ArrayList<>();
         List<Corrupted_police> tab_policiers_corru = new ArrayList<>();
         
+        try {
+           Scanner scan_fichier = new Scanner(new File("noms_policiers_corrompus.txt"));
+           while(scan_fichier.hasNextLine())
+           {
+               String line = scan_fichier.nextLine();
+               Corrupted_police new_corrupted_policier = new Corrupted_police(line);
+               policiers_corru_dispo.add(new_corrupted_policier);
+           }
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé");
+        }
         
-        Corrupted_police adrien = new Corrupted_police("<Police_corrupt> Adrien");
-        Corrupted_police jimmy = new Corrupted_police("<Police_corrupt> Jimmy");
-       
-       
-        
-        policiers_corru_dispo.add(adrien);
-        policiers_corru_dispo.add(jimmy);
-        
-       
         for(int i = 0; i<nombre_policiers_corru;i++){
             tab_policiers_corru.add(policiers_corru_dispo.get(i));
         }
@@ -338,9 +328,9 @@ public class Projet_de_Java {
             (tab_traders_corru.get(i)).menace = 4;
         }
         
-        //menace policier = 3
+        //menace policier = 4
         for(int i = 0; i<tab_policiers.size();i++){
-            (tab_policiers.get(i)).menace = 3;
+            (tab_policiers.get(i)).menace = 4;
         }
         
         // menace policier corrompu = 4
@@ -493,11 +483,12 @@ public class Projet_de_Java {
         
         while(true){
             
-            wait(1000);
+            
 
 
             if(!tab_pirates.isEmpty() && !tab_traders.isEmpty()){
                 System.out.println("Les pirates se déplacent ...\n");
+                wait(1000);
                 int p =0;
                 for(int u = 0; u<tab_traders.size();u++){
                 tab_pirates.get(p).attack(tab_pirates.get(p), tab_traders.get(u));
@@ -521,10 +512,11 @@ public class Projet_de_Java {
                 }
             }
 
-            wait(1000);
+            
             
             if(!tab_policiers.isEmpty() && !tab_pirates.isEmpty()){
                 System.out.println("\nLes policiers se déplacent pour venir arrêter les pirates...\n");
+                wait(1000);
                 int m =0;
                 for(int u =  0; u<tab_pirates.size();u++){
                     tab_policiers.get(m).arrest(tab_policiers.get(m),tab_pirates.get(u));
@@ -549,10 +541,11 @@ public class Projet_de_Java {
             }
 
             
-            wait(1000);
+            
             
             if(!tab_traders.isEmpty() && !tab_policiers.isEmpty()){
                 System.out.println("\nLes policiers décident de taxer les pauvres traders aux alentours ...\n");
+                wait(1000);
                 int n =0;
                 for(int u =  0; u<tab_traders.size();u++){
                     tab_policiers.get(n).taxe(tab_policiers.get(n),tab_traders.get(u));
@@ -567,10 +560,11 @@ public class Projet_de_Java {
 
             }
 
-            wait(1000);
+            
             
             if(!tab_traders_corru.isEmpty() && !tab_policiers.isEmpty()){
                 System.out.println("\nLes policiers décident de taxer les traders corrompus...\n");
+                wait(1000);
                 int l =0;
                 for(int u =  0; u<tab_traders_corru.size();u++){
                     tab_policiers.get(l).taxe(tab_policiers.get(l),tab_traders_corru.get(u));
@@ -595,10 +589,11 @@ public class Projet_de_Java {
             }
 
             
-            wait(1000);
+            
             
             if(!tab_policiers_corru.isEmpty() && !tab_traders_corru.isEmpty()){
                 System.out.println("\nLes policiers corrompus décident d'éliminer la concurrence...\n");
+                wait(1000);
                 int o =0;
                 for(int u =  0; u<tab_traders_corru.size();u++){
                     tab_policiers_corru.get(o).police_corru_attack(tab_policiers_corru.get(o), tab_traders_corru.get(u));
@@ -622,10 +617,11 @@ public class Projet_de_Java {
                 }
             }
 
-            wait(1000);
+            
             
             if(tab_policiers_corru.size()>=tab_traders_corru.size() && !tab_pirates.isEmpty() && !tab_policiers_corru.isEmpty()){
                 System.out.println("\nLes policiers corrompus décident de passer à l'attaque...\n");
+                wait(1000);
                 int q =0;
                 for(int u =  0; u<tab_pirates.size();u++){
                     tab_policiers_corru.get(q).police_corru_attack(tab_policiers_corru.get(q),  tab_pirates.get(u));
@@ -650,6 +646,7 @@ public class Projet_de_Java {
             }
             else if(tab_policiers_corru.size()<tab_traders_corru.size() && !tab_pirates.isEmpty() && !tab_traders_corru.isEmpty()){
                 System.out.println("\nLes traders corrompus décident de passer à l'attaque...\n");
+                wait(1000);
                 int q =0;
                 for(int u =  0; u<tab_pirates.size();u++){
                     tab_traders_corru.get(q).trader_corru_attack(tab_traders_corru.get(q), tab_pirates.get(u));
@@ -673,7 +670,24 @@ public class Projet_de_Java {
                 }
             }
 
-
+            
+            if(tab_pirates.size() >= 2){
+                System.out.println("\nLes pirates se décident de chasser leurs compères...\n");
+                wait(1000);
+         
+                while(tab_pirates.size() >= 2){
+                    int index = 1 + (int)(Math.random()*(tab_pirates.size()-2)); //index ]0;max_index_tab_pirate]
+                    
+                    tab_pirates.get(0).attack(tab_pirates.get(0), tab_pirates.get(index));
+                    if(tab_pirates.get(0).sink==true){
+                        tab_pirates.remove(0);
+                    }
+                    else if(tab_pirates.get(index).sink == true){
+                        tab_pirates.remove(index); 
+                    }
+                }
+            }
+            
             int pirates_restants = tab_pirates.size();
             int traders_restants = tab_traders.size();
             int policiers_restants = tab_policiers.size();
@@ -681,7 +695,7 @@ public class Projet_de_Java {
             int corrupted_policiers_restants = tab_policiers_corru.size();
 
             //On arrête le jeu
-            if(pirates_restants == 0 || corrupted_traders_restants + corrupted_policiers_restants == 0){
+            if(pirates_restants == 1 || corrupted_traders_restants + corrupted_policiers_restants + traders_restants== 0){
                 break;
             }
             
@@ -700,7 +714,7 @@ public class Projet_de_Java {
         
         wait(2000);
         
-        System.out.println("\nRécap des bateaux restants:");
+        System.out.println("\nRécap des bateaux restants:\n");
         System.out.println("Pour les pirates:");
         
         if(!tab_pirates.isEmpty()){

@@ -8,12 +8,12 @@ package projet_de_java;
 
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Arnaud
  */
 public class Ship {
     
-    boolean sink=false;
-    int menace;
+    protected boolean sink=false;
+    protected int menace;
     protected String nom;
     
     /*public static void action(String args){

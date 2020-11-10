@@ -7,20 +7,20 @@ package projet_de_java;
 
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Arnaud
  */
 public class Corrupted_trader extends Trader implements Outlaw {
-    int bounty;
-    boolean revealed;
-    boolean corrupted;
+    protected int bounty;
+    protected boolean revealed;
+    protected boolean corrupted;
     
     
-    Corrupted_trader(String name){
+    protected Corrupted_trader(String name){
         super(name);
         this.corrupted = true;
     }
 
-    @Override
+    /*@Override
     public void trader_corru_attack(Corrupted_trader trader, Trader ship){
         
         trader.bounty += ship.treasure; 
@@ -28,7 +28,7 @@ public class Corrupted_trader extends Trader implements Outlaw {
         ship.sink = true;
         System.out.println("Attention ! " + trader.nom + " qui est corrompu a coulé " + ship.nom + " et remporte son butin");
 
-    }
+    }*/
     
     @Override
     public void trader_corru_attack(Corrupted_trader trader, Police ship){
@@ -84,10 +84,10 @@ public class Corrupted_trader extends Trader implements Outlaw {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
-    @Override
+    /*@Override
     public void police_corru_attack(Corrupted_police police, Trader ship) {
         throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    }*/
 
     @Override
     public void police_corru_attack(Corrupted_police police, Corrupted_trader ship) {

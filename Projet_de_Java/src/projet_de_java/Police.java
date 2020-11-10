@@ -7,19 +7,19 @@ package projet_de_java;
 
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Arnaud
  */
 public class Police extends Ship {
-    int taxes =0;
+    protected int taxes =0;
     
     
     
-    public Police(String name){
+    protected Police(String name){
         this.nom = name;
     }
     
     
-    public void arrest(Police policier,Pirate pirate){
+    protected void arrest(Police policier,Pirate pirate){
         if(policier.menace>=pirate.menace){
             policier.taxes+=pirate.bounty;
             pirate.bounty = 0;
@@ -34,12 +34,12 @@ public class Police extends Ship {
         }
     }
     
-    public void taxe(Police policier, Trader trader){
+    protected void taxe(Police policier, Trader trader){
         policier.taxes+=0.4*trader.treasure;
         System.out.println("La taxe de " + policier.nom + " par " + trader.nom + " s'est bien passée");
     }
     
-    public void taxe(Police policier, Corrupted_trader trader){
+    protected void taxe(Police policier, Corrupted_trader trader){
         int luck = (int)(Math.random()*3);
         if(luck==0){
             policier.taxes+=trader.treasure+trader.bounty;

@@ -1,0 +1,12 @@
+<Trader> Maxence
+<Trader> Damien
+<Trader> Laura
+<Trader> Laetitia
+<Trader> Arnaud
+<Trader> Valentin
+<Trader> Titouan
+<Trader> Ginette
+<Trader> Remy
+<Trader> Louis
+<Trader> Pierre
+<Trader> Elodie

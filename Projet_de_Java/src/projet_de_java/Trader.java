@@ -7,13 +7,13 @@ package projet_de_java;
 
 /**
  *
- * @author Jimmy
+ * @author Jimmy, Arnaud
  */
 public class Trader extends Ship{
-    int treasure;
-    boolean escaped = false;
+    protected int treasure;
+    protected boolean escaped = false;
     
-    public Trader(String name){
+    protected Trader(String name){
         this.nom = name;
     }
     

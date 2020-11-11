@@ -6,18 +6,42 @@
 package projet_de_java;
 
 /**
- *
+ * Classe définissant un type de bateau comme étant un pirate.
+ * Un pirate a donc un bounty et hérite des mêmes attributs que la classe Ship.
+ * 
+ * @see Ship
+ * 
  * @author Jimmy, Arnaud
  */
 public class Pirate extends Ship{
+
+    /**
+     * Bounty est la variable qui contient la prime d'un bateau pirate.
+     * Bounty passe à 0 quand le bateau en question est coulé.
+     */
     protected int bounty;
     
-   
+    /**
+     * Contructeur de la classe Pirate contenant le nom du pirate.
+     * 
+     * @param name
+     *      le nom du pirate
+     */
     protected Pirate(String name){
         this.nom = name;
     }
     
-    //Dans le cas où un pirate veut attaquer un trader
+
+    /**
+     * Méthode permettant à un pirate d'attaquer un trader.
+     * 
+     * @param pirate
+     *      le pirate qui déclare l'attaque
+     * @param ship
+     *      le trader victime de l'attaque
+     * 
+     * @see Trader
+     */
     protected void attack(Pirate pirate, Trader ship){
 
         if(ship.menace < pirate.menace){ 
@@ -56,7 +80,15 @@ public class Pirate extends Ship{
    
     }*/
     
-    //Dans le cas où un pirate veut attaquer un autre pirate
+
+    /**
+     * Méthode permettant à un pirate d'attaquer un autre pirate.
+     * 
+     * @param pirate
+     *      le pirate qui déclare l'attaque
+     * @param ship
+     *      le pirate victime de l'attaque
+     */
     protected void attack(Pirate pirate, Pirate ship){
        
         if(ship.menace < pirate.menace ){

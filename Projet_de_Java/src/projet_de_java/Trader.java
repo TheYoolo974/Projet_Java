@@ -6,24 +6,28 @@
 package projet_de_java;
 
 /**
- *
+ * Classe définissant un type de bateau comme étant un trader.
+ * Un trader a donc un trésor et hérite des mêmes attributs que la classe Ship.
+ * 
+ * @see Ship
+ * 
  * @author Jimmy, Arnaud
  */
 public class Trader extends Ship{
+
+    /**
+     * La variable treasure contient le trésor contenu dans les bateaux de traders.
+     * Quand un bateau de trader coule, treasure passe à 0.
+     */
     protected int treasure;
-    protected boolean escaped = false;
     
+    /**
+     * Contructeur de la classe Trader contenant le nom du trader.
+     * 
+     * @param name
+     *      le nom du trader
+     */
     protected Trader(String name){
         this.nom = name;
     }
-    
-    /*public void runaway(){
-        if(escaped == true){
-            System.out.println("Le trader a réussi à s'échapper !");
-        }
-        else{
-            System.out.println("Le trader n'a pas réussi à s'échapper !");
-        }
-    }*/
-   
 }

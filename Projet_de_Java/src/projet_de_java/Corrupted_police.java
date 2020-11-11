@@ -6,20 +6,54 @@
 package projet_de_java;
 
 /**
- *
+ * Classe définissant un type de bateau comme étant un policier corrompu.
+ * Un policier corrompu récolte des taxes et a une variable donnant l'information de si il a était découvert par les autres bateaux.
+ * Il hérite des mêmes attributs que la classe Police et donc Ship.
+ * 
+ * @see Ship
+ * @see Police
+ * 
+ * Il est aussi relié à l'interface Outlaw.
+ * 
+ * @see Outlaw
+ * 
  * @author Jimmy, Arnaud
  */
 public class Corrupted_police extends Police implements Outlaw{
+
+    /**
+     *
+     */
     protected int bounty;
-    protected boolean revealed;
-    protected boolean corrupted;
+
+    /**
+     * La variable revealed permet de savoir si un bateau corrompu a était découvert par les autres bateaux.
+     * Quand un bateau corrompu loupe son attaque, revealed passe à True et provoque des conséquences sur ses prochaines interactions avec les autres bateaux.
+     * De base, revealed vaut False.
+     */
+    protected boolean revealed = false;
+
     
-    
+    /**
+     * Contructeur de la classe Corrupted_police contenant le nom du policier corrompu.
+     * 
+     * @param name
+     *      le nom du policier corrompu
+     */
     protected Corrupted_police(String name){
         super(name);
-        this.corrupted = true;
     }
     
+    /**
+     * Méthode permettant à un policier corrompu d'attaquer un pirate.
+     * 
+     * @param police
+     *      le policier corrompu qui déclare l'attaque
+     * @param ship
+     *      le pirate victime de l'attaque
+     * 
+     * @see Pirate
+     */
     @Override
     public void police_corru_attack(Corrupted_police police, Pirate ship){
          if(police.menace>=ship.menace){
@@ -45,7 +79,17 @@ public class Corrupted_police extends Police implements Outlaw{
         
 
     }*/
-    
+
+    /**
+     * Méthode permettant à un policier corrompu d'attaquer un trader corrompu.
+     * 
+     * @param police
+     *      le policier corrompu qui déclare l'attaque
+     * @param ship
+     *      le trader corrompu victime de l'attaque
+     * 
+     * @see Corrupted_trader
+     */
     @Override
     public void police_corru_attack(Corrupted_police police, Corrupted_trader ship){
         int luck = (int)(Math.random());

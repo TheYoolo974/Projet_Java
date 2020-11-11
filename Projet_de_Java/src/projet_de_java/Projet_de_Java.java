@@ -14,12 +14,19 @@ import java.io.FileNotFoundException;
 
 
 /**
- *
+ * Classe contenant le main et qui utilise les différentes classes/méthodes.
+ * 
  * @author Jimmy, Arnaud
  */
 public class Projet_de_Java {
 
-    
+    /**
+     * Permet de mettre un délai avant la prochaine interaction.
+     * Prends en argument un entier correspondant au nombre de millisecondes d'attente voulu.
+     * 
+     * @param ms
+     *      (int) nombre de millisecondes
+     */
     public static void wait(int ms){
         try
         {
@@ -31,6 +38,11 @@ public class Projet_de_Java {
         }
     }
     
+    /**
+     * Permet de lancer le code principal et donc le générateur de la partie.
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         
         Scanner keyboard = new Scanner (System.in);

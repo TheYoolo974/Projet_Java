@@ -10,11 +10,10 @@ package projet_de_java;
  * Un policier corrompu récolte des taxes et a une variable donnant l'information de si il a était découvert par les autres bateaux.
  * Il hérite des mêmes attributs que la classe Police et donc Ship.
  * 
- * @see Ship
- * @see Police
- * 
  * Il est aussi relié à l'interface Outlaw.
  * 
+ * @see Ship
+ * @see Police
  * @see Outlaw
  * 
  * @author Jimmy, Arnaud
@@ -22,7 +21,8 @@ package projet_de_java;
 public class Corrupted_police extends Police implements Outlaw{
 
     /**
-     *
+     * Bounty est la variable qui contient la prime d'un bateau corrompu.
+     * Bounty passe à 0 quand le bateau en question est coulé.
      */
     protected int bounty;
 

@@ -10,11 +10,10 @@ package projet_de_java;
  * Un trader corrompu a donc un bounty et une variable donnant l'information de si il a était découvert par les autres bateaux.
  * Il hérite des mêmes attributs que la classe Trader et donc Ship.
  * 
- * @see Ship
- * @see Trader
- * 
  * Il est aussi relié à l'interface Outlaw.
  * 
+ * @see Ship
+ * @see Trader
  * @see Outlaw
  * 
  * @author Jimmy, Arnaud
